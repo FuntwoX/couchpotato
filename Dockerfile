@@ -1,4 +1,4 @@
-FROM lsiobase/alpine.python
+FROM linuxserver/baseimage.python
 MAINTAINER BS
 
 # set python to use utf-8 rather than ascii, hopefully resolve special characters in movie names
