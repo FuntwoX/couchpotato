@@ -5,7 +5,6 @@ MAINTAINER BS
 ENV PYTHONIOENCODING="UTF-8"
 
 RUN apk update \
-    && apk add py3-lxml \
     && git clone --depth=1 \
            https://github.com/CouchPotato/CouchPotatoServer.git \
            /opt/couchpotato \
