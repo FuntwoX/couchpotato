@@ -17,7 +17,7 @@ RUN apk update \
 RUN mkdir /torrents
 RUN ln -s /torrents /downloads
 
-RUN mkdir -r /config/custom_plugins
+RUN mkdir -p /config/custom_plugins
 
 RUN ["cp -r",  "/opt/frenchproviders/t411", "/config/custom_plugins/t411"]
 RUN ["cp -r", "/opt/frenchproviders/cpasbien", "/config/custom_plugins/cpasbien"]
