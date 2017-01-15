@@ -17,13 +17,12 @@ RUN apk update \
 RUN mkdir /torrents
 RUN ln -s /torrents /downloads
 
-RUN mkdir -p /config/custom_plugins
-
-RUN ["cp -r",  "/opt/frenchproviders/t411", "/config/custom_plugins/t411"]
-RUN ["cp -r", "/opt/frenchproviders/cpasbien", "/config/custom_plugins/cpasbien"]
-RUN ["cp", "/opt/frenchproviders/namer_check.py", "/opt/couchpotato/couchpotato/core/helpers/namer_check.py"]
+COPY customPlugins.sh /
 
 VOLUME /config
+
+RUN chmod +x customPlugins.sh
+CMD ["/customPlugins.sh"]
 
 EXPOSE 5050
 
