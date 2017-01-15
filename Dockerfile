@@ -22,7 +22,7 @@ COPY customPlugins.sh /
 VOLUME /config
 
 RUN chmod +x customPlugins.sh
-CMD /customPlugins.sh
+CMD ["/customPlugins.sh"]
 
 EXPOSE 5050
 
