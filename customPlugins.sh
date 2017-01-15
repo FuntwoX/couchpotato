@@ -1,5 +1,4 @@
 #!/bin/bash
-mkdir -p /config/testc/
 
 cp -r /opt/frenchproviders/t411 /config/custom_plugins/t411
 cp -r /opt/frenchproviders/cpasbien /config/custom_plugins/cpasbien
