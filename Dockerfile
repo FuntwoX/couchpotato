@@ -12,14 +12,15 @@ RUN apk update \
        https://github.com/Snipees/couchpotato.providers.french.git \
        /opt/frenchproviders \
 	&& rm -rf /var/lib/apt/lists/*
+	&& rm -rf /var/lib/apt/lists/*
 
 # Monte le dossier "torrents" dans "downloads" afin de permettre le téléchargement personnalisé sur rTorrent 
 RUN mkdir /torrents
 RUN ln -s /torrents /downloads
 
-ADD /opt/frenchproviders/t411 /config/custom_plugins/t411
-ADD /opt/frenchproviders/cpasbien /config/custom_plugins/cpasbien
-ADD /opt/frenchproviders/namer_check.py /opt/couchpotato/couchpotato/core/helpers/namer_check.py
+RUN ["cp",  "/opt/frenchproviders/t411", "/config/custom_plugins/t411"]
+RUN ["cp", "/opt/frenchproviders/cpasbien", "/config/custom_plugins/cpasbien"]
+RUN ["cp", "/opt/frenchproviders/namer_check.py", "/opt/couchpotato/couchpotato/core/helpers/namer_check.py"]
 
 VOLUME /config
 
