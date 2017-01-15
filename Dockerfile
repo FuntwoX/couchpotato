@@ -19,12 +19,9 @@ RUN ln -s /torrents /downloads
 
 VOLUME /config
 
-#copy couchpotato.providers.french files to couchpotato
-RUN mkdir -p /config/custom_plugins/t411 /config/custom_plugins/cpasbien
-
-RUN cp -r /opt/frenchproviders/t411 /config/custom_plugins/t411 \
-	&& cp -r /opt/frenchproviders/cpasbien /config/custom_plugins/cpasbien \
-	&& cp /opt/frenchproviders/namer_check.py /opt/couchpotato/couchpotato/core/helpers/namer_check.py
+COPY customPlugins.sh /
+RUN chmod +x customPlugins.sh
+CMD /customPlugins.sh
 
 EXPOSE 5050
 
