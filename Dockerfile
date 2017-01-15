@@ -21,9 +21,8 @@ COPY customPlugins.sh /
 
 VOLUME /config
 
-RUN chmod +x customPlugins.sh
-
 EXPOSE 5050
 
-CMD python /opt/couchpotato/CouchPotato.py --data_dir /config 
+RUN chmod +x customPlugins.sh
 CMD ["/customPlugins.sh"]
+CMD python /opt/couchpotato/CouchPotato.py --data_dir /config 
