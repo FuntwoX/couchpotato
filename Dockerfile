@@ -17,9 +17,10 @@ RUN apk update \
 RUN mkdir /torrents
 RUN ln -s /torrents /downloads
 
+COPY customPlugins.sh /
+
 VOLUME /config
 
-COPY customPlugins.sh /
 RUN chmod +x customPlugins.sh
 CMD /customPlugins.sh
 
