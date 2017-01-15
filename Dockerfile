@@ -8,21 +8,14 @@ RUN apk update \
     && git clone --depth=1 \
            https://github.com/CouchPotato/CouchPotatoServer.git \
            /opt/couchpotato \
-    && git clone --depth=1 \
-       https://github.com/Snipees/couchpotato.providers.french.git \
-       /opt/frenchproviders \
 	&& rm -rf /var/lib/apt/lists/*
 
 # Monte le dossier "torrents" dans "downloads" afin de permettre le téléchargement personnalisé sur rTorrent 
 RUN mkdir /torrents
 RUN ln -s /torrents /downloads
 
-COPY customPlugins.sh /
-
 VOLUME /config
 
 EXPOSE 5050
 
-RUN chmod +x customPlugins.sh
-CMD ["/customPlugins.sh"]
 CMD python /opt/couchpotato/CouchPotato.py --data_dir /config 
