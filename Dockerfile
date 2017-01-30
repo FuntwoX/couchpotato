@@ -24,4 +24,6 @@ RUN mkdir -p /etc/periodic/${POSTP_TIME}min
 COPY post_couchpotato.sh /etc/periodic/${POSTP_TIME}min/post_couchpotato
 RUN chmod -R +x /etc/periodic/
 
-CMD python /opt/couchpotato/CouchPotato.py --data_dir /config 
+
+CMD python /opt/couchpotato/CouchPotato.py --data_dir /config
+CMD ["crond", "-f", "-d", "8"]
