@@ -5,6 +5,7 @@ MAINTAINER BS
 ENV PYTHONIOENCODING="UTF-8"
 
 RUN apk update \
+	&& apk 
     && git clone --depth=1 \
            https://github.com/CouchPotato/CouchPotatoServer.git \
            /opt/couchpotato \
@@ -17,5 +18,11 @@ RUN ln -s /torrents /downloads
 VOLUME /config
 
 EXPOSE 5050
+
+ENV POSTP_TIME=5
+
+RUN mkdir -p /etc/periodic/${POSTP_TIME}min
+COPY post_couchpotato.sh /etc/periodic/${POSTP_TIME}min/post_couchpotato
+RUN chmod -R +x /etc/periodic/
 
 CMD python /opt/couchpotato/CouchPotato.py --data_dir /config 
