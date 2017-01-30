@@ -26,5 +26,5 @@ RUN chmod -R +x /etc/periodic/
 
 RUN crontab -l | { cat; echo "*/${POSTP_TIME}     *       *       *       *       run-parts /etc/periodic/${POSTP_TIME}min"; } | crontab -
 
+RUN crond -f -d 8
 CMD python /opt/couchpotato/CouchPotato.py --data_dir /config
-CMD ["crond", "-f", "-d", "8"]
