@@ -30,7 +30,7 @@ RUN crontab -l | { cat; echo "*/${POSTP_TIME}     *       *       *       *     
 #supervisord install and conf
 RUN apk --no-cache add supervisor
 COPY config/supervisord.conf /etc/supervisord.conf
-COPY config/cron.ini /etc/supervisord.d/cron.ini
-COPY config/couchpotato.ini /etc/supervisord.d/couchpotato.ini
+COPY config/cron.ini /etc/supervisor.d/cron.ini
+COPY config/couchpotato.ini /etc/supervisor.d/couchpotato.ini
 
 ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
