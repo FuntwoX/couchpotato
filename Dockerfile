@@ -28,8 +28,7 @@ RUN chmod -R +x /etc/periodic/
 RUN crontab -l | { cat; echo "*/${POSTP_TIME}     *       *       *       *       run-parts /etc/periodic/${POSTP_TIME}min"; } | crontab -
 
 #supervisord install and conf
-ENV SUPERVISOR_VERSION=3.3.1
-RUN pip install supervisor==$SUPERVISOR_VERSION
+RUN apk --no-cache add supervisor
 COPY config/supervisord.conf /etc/supervisord.conf
 COPY config/cron.ini /etc/supervisord.d/cron.ini
 COPY config/couchpotato.ini /etc/supervisord.d/couchpotato.ini
