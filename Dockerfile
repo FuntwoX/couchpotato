@@ -1,5 +1,5 @@
 FROM lsiobase/alpine.python
-MAINTAINER BS
+MAINTAINER <https://github.com/FuntwoX>
 
 # set python to use utf-8 rather than ascii, hopefully resolve special characters in movie names
 ENV PYTHONIOENCODING="UTF-8"
