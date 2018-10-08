@@ -6,6 +6,7 @@ ENV PYTHONIOENCODING="UTF-8"
 
 RUN apk update \
     && git clone --depth=1 \
+    	   -b develop \
            https://github.com/CouchPotato/CouchPotatoServer.git \
            /opt/couchpotato \
 	&& rm -rf /var/lib/apt/lists/*
